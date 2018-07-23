@@ -1,0 +1,15 @@
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Document
+        if(success_msg)
+            div.alert #{success_msg}
+        if(error_msg)
+            div.alert #{error_msg}
+        if(error)
+            div.alert #{error}
+    body(style="background-color: blanchedalmond")
+        block content
+    

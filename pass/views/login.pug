@@ -1,0 +1,9 @@
+extends base
+block content
+    h2 Welcome To Login
+    form(action="/login" method='post')
+        lable Username:
+        input(type="text" name='name' autocomplete='off')
+        lable Password:
+        input(type="password" name="password" autocomplete="off")
+        input(type="submit", value="Submit")

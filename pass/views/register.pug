@@ -1,0 +1,9 @@
+extends base
+block content
+    h3 Welcome To Register
+    form(action="/register" method='post')
+        lable Username:
+        input(type="text" name='name' autocomplete='off')
+        lable Password:
+        input(type="password" name="password" autocomplete="off")
+        input(type="submit", value="Submit")
