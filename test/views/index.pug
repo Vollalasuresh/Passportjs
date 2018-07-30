@@ -1,0 +1,19 @@
+extends base.pug
+block content
+    h1 Welcome To Home Page
+    h2 Login
+    form(action='/login' class="login" method='POST')
+        lable Username:
+        input(type='text' name='name' autocomplete="off")
+        lable Password:
+        input(type="password", name="password" autocomplete="off")
+        input(type="submit" value="Login")
+        br
+        br
+    h2(class='signup') Sign Up
+    form(action='/register' class="register" method='POST')
+        lable Username:
+        input(type='text' name='name' autocomplete="off")
+        lable Password:
+        input(type="password", name="password" autocomplete="off")
+        input(type="submit" value="Create Account")
