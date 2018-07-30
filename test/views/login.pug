@@ -1,0 +1,9 @@
+extends base.pug
+block content
+    h3 Login
+    form(action='/login' class="login" method='POST')
+        lable Username:
+        input(type='text' name='name' autocomplete="off")
+        lable Password:
+        input(type="password", name="password" autocomplete="off")
+        input(type="submit" value="Login")
