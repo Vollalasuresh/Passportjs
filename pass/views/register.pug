@@ -1,6 +1,7 @@
 extends base
 block content
     h3 Welcome To Register
+    h3 #{usererrr_msg}
     form(action="/register" method='post')
         lable Username:
         input(type="text" name='name' autocomplete='off')

@@ -30,6 +30,7 @@ passport.use('local.register',new LocalStrategy({
         }
         if(user)
             {
+                req.flash('userExists','User Already Registerd')
                 return done(null,false)
             }
             var s= new User();
@@ -58,23 +59,28 @@ passport.use('local.login',new LocalStrategy({
 },(req,name,password,done)=>{
     User.findOne({name:name},(err,user)=>
     {
-       console.log(user.password)
+        console.log(user)
+    //    console.log(user.password)
         if(err)
         {
             console.log("@@@@@@@@@@@@@@@@@@@@@",err)
             return done(err)
         } 
+        if(!user)
+        {
+            // console.log(loginError)
+            req.flash('loginError','User is not Registered')
+            
+            console.log("!!!!!!!!!!!!!!!!!!!!!",err)
+            return done(null,false)
+        }
         if(!user.validPassword(req.body.password,user))
         {
-            req.flash('login error',"username is nit found")
+            req.flash('passwordError',"User Password is Wrong")
             console.log("&&&&&&&&&&&&&&&&&&&&&&&&&")
             return done(null, false);
         }
-        if(!user)
-        {
-            console.log("!!!!!!!!!!!!!!!!!!!!!")
-            return done(null,false)
-        }
+        
         return done(null,user);
     })
 

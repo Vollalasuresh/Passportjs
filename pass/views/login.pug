@@ -1,6 +1,8 @@
 extends base
 block content
     h2 Welcome To Login
+    h2 #{login_err}
+    h2 #{password_err}
     form(action="/login" method='post')
         lable Username:
         input(type="text" name='name' autocomplete='off')

@@ -6,16 +6,20 @@ var passport=require('passport')
 
 router.get('/login',(req,res)=>
 {
-    res.render('login')
+   login_err=req.flash('loginError');
+   password_err=req.flash('passwordError')
+    console.log("########",password_err)
+    res.render('login',{login_err,password_err})
 })
 router.get('/register',(req,res)=>
 {
-    res.render('register')
+    usererrr_msg=req.flash('userExists')
+    res.render('register',{usererrr_msg})
 
 })
 
 router.post('/register',passport.authenticate('local.register',{
-    successRedirect:'/login',
+    successRedirect:'/show',
     failureRedirect:'/register',
     failureFlash:true
 }))
@@ -26,6 +30,7 @@ router.post('/login',passport.authenticate('local.login',{
 }))
 router.get('/show',isLoggedIn,(req,res)=>
 {
+
     res.render('show')
 })
 router.get('/logout',(req,res)=>

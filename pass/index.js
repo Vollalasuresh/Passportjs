@@ -10,7 +10,7 @@ var ms=require('connect-mongo')(session);
 var flash=require('express-flash')
 
 
-mongoose.connect('mongodb://localhost:27017/pass');
+mongoose.connect('mongodb://localhost:27017/passp');
 
 var app=express();
 
@@ -18,7 +18,7 @@ app.set('view engine','pug');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname+'public')));
 app.use(bodyParser.json());
-app.use(flash())
+
 app.use(cookieParser());
 app.use(session({
     secret:'sec',
@@ -26,7 +26,7 @@ app.use(session({
     saveUninitialized:true,
     store: new ms({mongooseConnection:mongoose.connection})
 }))
-
+app.use(flash())
 app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport')
